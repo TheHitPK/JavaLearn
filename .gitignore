@@ -1,3 +1,5 @@
-**/bin
-**/.classpath
-**.project
+bin/
+.classpath
+.project
+*.class
+.idea/
