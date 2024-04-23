@@ -1,4 +1,5 @@
 **/bin
 **/.classpath
 **.project
-**.class
+**/.class
+bin/holaMundo/HolaMundo.class
