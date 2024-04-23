@@ -2,4 +2,4 @@
 **/.classpath
 **.project
 **/.class
-bin/holaMundo/HolaMundo.class
+**/bin/holaMundo/HolaMundo.class
