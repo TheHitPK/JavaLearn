@@ -1,6 +1,6 @@
-*bin/
-*.classpath
-*.project
-*.class
+**bin/
+**.classpath
+**.project
+**.class
 .idea/
-*.setting/
+**.setting/
