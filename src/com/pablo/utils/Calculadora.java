@@ -11,18 +11,17 @@ public class Calculadora {
 	//Metodo resta
 	static void resta(int a, int b){
 		result = a - b;
-		}
+	}
 	//Metodo multiplicacion
 	static void multiplicacion(int a, int b){
 		result = a * b;
-		}
+	}
 	//Metodo Division
 	static void division(int a, int b){
 		result = a / b;
-		}
+	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		Scanner scan = new Scanner(System.in);
 		System.out.println("Escriba el primer numero:");
 		int first =scan.nextInt();
