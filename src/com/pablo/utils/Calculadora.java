@@ -47,14 +47,21 @@ public class Calculadora {
 			break;
 			
 			case "/":
-				division(first,second);
+				if(second != 0) {
+					division(first,second);
+				}else {
+					System.out.print("ERROR-El denominador no puede ser 0");
+				}
+				
 			break;
 			
 			default:
 				System.out.print("XD");
 		}
+		if(second != 0) {
+			System.out.print(result);
+		}
 		
-		System.out.print(result);
 	}
 
 }
