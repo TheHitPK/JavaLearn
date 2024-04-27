@@ -2,8 +2,8 @@ package com.pablo.utils;
 import java.util.Scanner;
 public class OperacionesAritmeticas {
 //Metodo comparativo a mayor
-	static void numeroMayor(int a,int b) {
-		System.out.print("El numero mayor es: " + Math.max(a, b));
+		static int numeroMayor(int a,int b) {
+		return Math.max(a, b);
 	}
 //Metodo Main
 	public static void main(String[] args) {
@@ -17,8 +17,8 @@ public class OperacionesAritmeticas {
 		int y = scan.nextInt();
 		//Cierre Clase Scanner
 		scan.close();
-		//Impresion
-		numeroMayor(x,y);
+		//Impresion		
+		System.out.print("El numero mayor es: " + numeroMayor(x,y));
 		
 	}
 
