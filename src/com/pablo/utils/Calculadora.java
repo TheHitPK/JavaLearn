@@ -47,9 +47,9 @@ public class Calculadora {
 			break;
 			
 			case "/":
-				if(second != 0) {
+				try {
 					division(first,second);
-				}else {
+				}catch(Exception e) {
 					System.out.print("ERROR-El denominador no puede ser 0");
 				}
 				
