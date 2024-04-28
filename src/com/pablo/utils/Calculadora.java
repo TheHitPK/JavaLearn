@@ -18,7 +18,12 @@ public class Calculadora {
 	}
 	//Metodo Division
 	static void division(int a, int b){
-		result = a / b;
+		if(b == 0) {
+			throw new ArithmeticException("ERROR-El denominador no puede ser 0");
+		}else {
+			result = a / b;
+		}
+		
 	}
 
 	public static void main(String[] args) {
@@ -47,12 +52,7 @@ public class Calculadora {
 			break;
 			
 			case "/":
-				try {
-					division(first,second);
-				}catch(Exception e) {
-					System.out.print("ERROR-El denominador no puede ser 0");
-				}
-				
+					division(first,second);												
 			break;
 			
 			default:
