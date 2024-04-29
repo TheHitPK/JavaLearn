@@ -37,6 +37,8 @@ public class Calculadora {
 		System.out.println("Escriba el segundo numero");
 		int second = scan.nextInt();
 		
+		scan.close();
+		
 		//Operacion
 		switch(opc) {
 			case "+":
