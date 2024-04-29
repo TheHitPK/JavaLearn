@@ -64,10 +64,16 @@ public class PromedioEstudiante {
 						System.out.println("El estudiante ha sido reprobado con un promedio de "+ promedio);
 					}
 					
-				}System.out.println("Nota erronea");
-			}System.out.println("Nota erronea");
+				}else{
+					System.out.println("Nota erronea");
+				}
+			}else{
+				System.out.println("Nota erronea");
+			}
 			
-		}System.out.println("Nota erronea");
+		}else{
+			System.out.println("Nota erronea");
+		}
 		
 
 	}
