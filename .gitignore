@@ -1,6 +1,15 @@
+<<<<<<< HEAD
 **bin/
 **.classpath
 **.project
 **.class
 .idea/
 **.setting/
+=======
+bin/
+.classpath
+.project
+*.class
+.idea/
+*.settings/
+>>>>>>> ba03da327a544e9fef901896dd205aa898e098e9
