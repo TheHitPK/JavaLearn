@@ -18,7 +18,12 @@ public class Calculadora {
 	}
 	//Metodo Division
 	static void division(int a, int b){
-		result = a / b;
+		if(b == 0) {
+			throw new ArithmeticException("ERROR-El denominador no puede ser 0");
+		}else {
+			result = a / b;
+		}
+		
 	}
 
 	public static void main(String[] args) {
@@ -31,6 +36,8 @@ public class Calculadora {
 		String opc = scan.nextLine();
 		System.out.println("Escriba el segundo numero");
 		int second = scan.nextInt();
+		
+		scan.close();
 		
 		//Operacion
 		switch(opc) {
@@ -47,14 +54,16 @@ public class Calculadora {
 			break;
 			
 			case "/":
-				division(first,second);
+					division(first,second);												
 			break;
 			
 			default:
 				System.out.print("XD");
 		}
+		if(second != 0) {
+			System.out.print(result);
+		}
 		
-		System.out.print(result);
 	}
 
 }
