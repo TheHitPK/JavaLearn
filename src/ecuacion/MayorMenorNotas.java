@@ -28,8 +28,21 @@ public class MayorMenorNotas {
 				int notas = 0;
 				int sumNotas=0;
 				for(int j=0;j<numRating;j++) {
+					System.out.println("Nota "+(j+1));
 					notas = scan.nextInt();
-					sumNotas+=notas;
+					if(notas >= 0 && notas <=20) {
+						
+						sumNotas+=notas;
+					}else {
+							
+							while(notas<0 || notas >20 ) {
+								System.out.println("Error, Marque una nota validad");
+								notas = scan.nextInt();
+							}
+						sumNotas+=notas;
+					}
+					
+						
 				}
 				promedio = sumNotas / numRating;
 				if(numRating < menosNotas ) {
@@ -53,7 +66,6 @@ public class MayorMenorNotas {
 				}
 				aux++;
 			}
-			
 			System.out.println("Mejor promedio: "+ mejorPromedio +" con " + mayorPromedio);
 			System.out.println("Peor promedio: "+ peorPromedio +" con " + menorPromedio);
 			System.out.println("Mas notas procesadas: "+ masCantidadNotas +" con " +masNotas );
@@ -67,6 +79,8 @@ public class MayorMenorNotas {
 			}
 			
 		}while(program==false);
+		
+		scan.close();
 
 	}
 
