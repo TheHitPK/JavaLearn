@@ -11,24 +11,24 @@ public class PromedioEstudiante {
 		//Ingreso de datos de estudiante
 		System.out.print("Ingrese el Nombre del estudiante: ");
 
-		String nameStudent = scan.nextLine();
+		String nombreEstudiante = scan.nextLine();
 		System.out.print("Ingrese la Cedula del estudiante: ");
-		String dniStudent = scan.nextLine();
+		String cedulaEstudiante = scan.nextLine();
 		System.out.println("Ingrese la fecha de nacimiento del estudiante del estudiante: ");
 		System.out.print("Ingrese el año: ");
-		int yearBorn= scan.nextInt();
+		int anioNacimiento= scan.nextInt();
 		System.out.print("Ingrese el mes: ");
-		int monthBorn= scan.nextInt();
+		int mesNacimiento= scan.nextInt();
 		System.out.print("Ingrese el dia: ");
-		int dayBorn= scan.nextInt();
-		LocalDate birthday = LocalDate.of(yearBorn, monthBorn, dayBorn);
+		int diaNacimiento= scan.nextInt();
+		LocalDate cumpleanios= LocalDate.of(anioNacimiento, mesNacimiento, diaNacimiento);
 		
 		//fecha actual en años, meses y dias
-		LocalDate today = LocalDate.now();	
+		LocalDate hoy = LocalDate.now();	
 		
 		//Calculo de edad
-		Period period = Period.between(birthday,today);
-		int year = period.getYears();
+		Period periodo = Period.between(cumpleanios,hoy);
+		int edad = periodo.getYears();
 		
 		//Ingreso de notas
 		System.out.print("Ingrese las notas del estudiante: ");
@@ -41,22 +41,21 @@ public class PromedioEstudiante {
 				System.out.println("Nota erronea");
 			}
 			
+		}	
+		int promedio = (notas)/3;
+					
+		System.out.println(nombreEstudiante+" "+cedulaEstudiante);		
+		if(edad >= 18) {
+			System.out.println("El estudiante es mayor de edad, tiene "+ edad);		
+		}else {
+			System.out.println("El estudiante es menor de edad, tiene "+ edad);
 		}
-		
-					int promedio = (notas)/3;
 					
-					System.out.println(nameStudent+" "+dniStudent);		
-					if(year >= 18) {
-						System.out.println("El estudiante es mayor de edad, tiene "+ year);		
-					}else {
-						System.out.println("El estudiante es menor de edad, tiene "+ year);
-					}
-					
-					if(promedio >= 10) {
-						System.out.println("El estudiante ha sido aprobado con un promedio de "+ promedio);
-					}else {
-						System.out.println("El estudiante ha sido reprobado con un promedio de "+ promedio);
-					}
+		if(promedio >= 10) {
+			System.out.println("El estudiante ha sido aprobado con un promedio de "+ promedio);
+		}else {
+			System.out.println("El estudiante ha sido reprobado con un promedio de "+ promedio);
+		}
 	}
 
 }

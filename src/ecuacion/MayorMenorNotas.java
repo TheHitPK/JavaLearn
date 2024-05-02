@@ -1,5 +1,6 @@
 package ecuacion;
 import java.util.Scanner;
+import java.time.*;
 import java.time.LocalDate;
 public class MayorMenorNotas {
 	
@@ -26,24 +27,24 @@ public class MayorMenorNotas {
 		int materia=0;
 		do {	
 			System.out.println("Cuantos estudiantes desea ingresar?");
-			int numStudent = scan.nextInt();
-			for(int i=0; i<numStudent;i++) {
+			int numeroEstudiantes= scan.nextInt();
+			for(int i=0; i<numeroEstudiantes;i++) {
 				System.out.println("Nombre del estudiante numero "+ (aux+1));
 				scan.nextLine();
-				String nameStudent = scan.nextLine();
+				String nombreEstudiante = scan.nextLine();
 				//Fecha de nacimiendo del estudiante
 				System.out.println("Ingrese la fecha de nacimiento del estudiante del estudiante: ");
 				System.out.print("Ingrese el año: ");
-				int yearBorn= scan.nextInt();
+				int anioNacimiento= scan.nextInt();
 				System.out.print("Ingrese el mes: ");
-				int monthBorn= scan.nextInt();
+				int mesNacimiento= scan.nextInt();
 				System.out.print("Ingrese el dia: ");
-				int dayBorn= scan.nextInt();
+				int diaNacimiento= scan.nextInt();
 				
 				//Sexo del estudiante
 				System.out.println("Ingrese el tipo sexo del estudiante H/Hombre  M/Mujer");
-				String sex = scan.next();
-				switch(sex) {
+				String sexo = scan.next();
+				switch(sexo) {
 					case "H":
 						masculino++;
 					break;
@@ -66,24 +67,10 @@ public class MayorMenorNotas {
 				
 				
 				//fecha actual en años, meses y dias
-				LocalDate today = LocalDate.now();
-				int yearDate = today.getYear();
-				int monthDate = today.getMonthValue();
-				int dayDate = today.getDayOfMonth();
-				int edad = 0;
-				
-				//Calculo de la edad
-				if(yearDate > yearBorn) {
-					edad = yearDate-yearBorn;
-					if(monthDate < monthBorn) {
-						edad--;
-					}else if(monthDate == monthBorn) {
-						if(dayDate < dayBorn) {
-							edad--;
-						}
-					}
-				}		 
-				int edadActual = edad;
+				LocalDate hoy = LocalDate.now();
+				LocalDate cumpleaños = LocalDate.of(anioNacimiento, mesNacimiento, diaNacimiento);
+				Period periodo =Period.between(cumpleaños, hoy);
+				int edadActual= periodo.getYears();
 				if(edadActual >= 18) {
 					System.out.println("El estudiante es mayor de edad, tiene "+ edadActual);
 					 mayorEdad++;
@@ -94,7 +81,7 @@ public class MayorMenorNotas {
 				}
 				//numero de notas
 				System.out.println("Cantidad de notas del estudiante ");
-				int numRating = scan.nextInt();
+				int cantNotas = scan.nextInt();
 				System.out.println("Ingrese que materia esta cursando el estudiante:  1/programacion 2/fisica 3/Matematicas");
 				materia = scan.nextInt();
 				switch(materia) {
@@ -114,42 +101,39 @@ public class MayorMenorNotas {
 				int promedio=0;
 				int notas = 0;
 				int sumNotas=0;
-				for(int j=0;j<numRating;j++) {
+				for(int j=0;j<cantNotas;j++) {
 					System.out.println("Nota "+(j+1));
 					notas = scan.nextInt();
 					if(notas >= 0 && notas <=20) {
 						
 						sumNotas+=notas;
-					}else {
-							
+					}else {							
 							while(notas<0 || notas >20 ) {
 								System.out.println("Error, Marque una nota validad");
 								notas = scan.nextInt();
 							}
 						sumNotas+=notas;
-					}
-					
-						
+					}						
 				}
-				promedio = sumNotas / numRating;
-				if(numRating < menosNotas ) {
-					menosNotas=numRating;
-					menosCantidadNotas = nameStudent;
+				promedio = sumNotas / cantNotas;
+				if(cantNotas < menosNotas ) {
+					menosNotas=cantNotas;
+					menosCantidadNotas = nombreEstudiante;
 				}
 				
-				if(numRating > masNotas ) {
-					masNotas=numRating;
-					masCantidadNotas = nameStudent;
+				if(cantNotas > masNotas ) {
+					masNotas=cantNotas;
+					masCantidadNotas = nombreEstudiante;
 				}
 				
 				if(promedio > mayorPromedio ) {
 					mayorPromedio=promedio;
-					mejorPromedio = nameStudent;
+					mejorPromedio = nombreEstudiante;
 				}
 				
 				if(promedio < menorPromedio ) {
 					menorPromedio=promedio;
-					peorPromedio = nameStudent;
+					peorPromedio = nombreEstudiante;
 				}
 				aux++;
 			}
