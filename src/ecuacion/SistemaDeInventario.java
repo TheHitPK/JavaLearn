@@ -1,0 +1,69 @@
+package ecuacion;
+import java.util.Scanner;
+public class SistemaDeInventario {
+	static Scanner scan = new Scanner(System.in);
+	//variables
+	static int aux = 0;
+	//arrays
+	static String producto[]=new String [10];
+	
+	
+	//metodos
+	static void agregarProducto(int x) {
+		for(int i = 0;i <=x; i++){
+			producto[aux]= scan.nextLine();
+			aux++;
+		}
+		
+	}
+	
+	static void visualizarProductos(){
+		for(int i = 0; i<aux;i++) {
+			if(producto != null) {
+				System.out.println(producto[i]);
+			}
+			
+			
+		}
+	}
+
+	public static void main(String[] args) {
+		
+		boolean programa = false;
+		do {
+			System.out.println("MENU");
+			System.out.println("1- Agregar producto.");
+			System.out.println("2- Visualizar productos.");
+			System.out.println("3- Modificar producto.");
+			System.out.println("4- Estadistica.");
+			System.out.println("5- Configuraciones (IVA / TASA DE CAMBIO).");
+			System.out.println("6- Salir.");
+			int opc= 0;
+			opc = scan.nextInt();
+			//MENU PRINCIPAL
+			
+			switch(opc){
+				case 1:
+					System.out.println("Agregar producto.");
+					System.out.println("Ingrese la cantidad de productos que sea agregar");
+					int cantProductos = 0;
+					cantProductos = scan.nextInt();
+					agregarProducto(cantProductos);
+					
+				break;	
+				
+				case 2:
+					System.out.println(" Visualizar Productos.");
+					visualizarProductos();
+				break;
+				
+				default:
+					System.out.println("Opcion invalida");
+				
+			}
+			
+		}while(programa == false);
+
+	}
+
+}

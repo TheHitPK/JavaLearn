@@ -2,6 +2,7 @@ package ecuacion;
 import java.util.Scanner;
 import java.time.LocalDate;
 public class MayorMenorNotas {
+	
 
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
