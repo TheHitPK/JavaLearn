@@ -44,28 +44,11 @@ public class MayorMenorNotas {
 				//Sexo del estudiante
 				System.out.println("Ingrese el tipo sexo del estudiante H/Hombre  M/Mujer");
 				String sexo = scan.next();
-				switch(sexo) {
-					case "H":
-						masculino++;
-					break;
-					
-					case "h":
-						masculino++;
-					break;
-					
-					case "M":
-						femenino++;
-					break;
-					
-					case "m":
-						femenino++;
-					break;
-					
-					default:
-						System.out.println("No binario");
-				}
-				
-				
+				if(sexo.equalsIgnoreCase("H")) {
+					masculino++;
+				}else {
+					femenino++;
+				}				
 				//fecha actual en años, meses y dias
 				LocalDate hoy = LocalDate.now();
 				LocalDate cumpleaños = LocalDate.of(anioNacimiento, mesNacimiento, diaNacimiento);
@@ -84,19 +67,12 @@ public class MayorMenorNotas {
 				int cantNotas = scan.nextInt();
 				System.out.println("Ingrese que materia esta cursando el estudiante:  1/programacion 2/fisica 3/Matematicas");
 				materia = scan.nextInt();
-				switch(materia) {
-					case 1:
-						programacion++;
-					break;
-					
-					case 2 :
-						fisica++;
-					break;
-					
-					case 3:
-						matematica++;
-					break;
-					
+				if(materia == 1) {
+					programacion++;
+				}else if(materia == 2){
+					fisica++;
+				}else if(materia==3){
+					matematica++;
 				}
 				int promedio=0;
 				int notas = 0;
