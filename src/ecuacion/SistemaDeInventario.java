@@ -9,8 +9,8 @@ public class SistemaDeInventario {
 	
 	
 	//metodos
-	static void agregarProducto(int x) {
-		for(int i = 0;i <=x; i++){
+	static void agregarProducto(int cantProductos) {
+		for(int i = 0;i <=cantProductos; i++){
 			producto[aux]= scan.nextLine();
 			aux++;
 		}
@@ -28,7 +28,7 @@ public class SistemaDeInventario {
 	}
 
 	public static void main(String[] args) {
-		
+		int salir = 6;
 		boolean programa = false;
 		do {
 			System.out.println("MENU");
@@ -57,7 +57,8 @@ public class SistemaDeInventario {
 				
 			}else if(opc == 5) {
 				
-			}else if(opc == 6) {
+			}else if(opc == salir) {
+				programa = true;
 				
 			}else {
 				System.out.println("Opcion incorrecta");
