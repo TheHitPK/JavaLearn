@@ -42,25 +42,28 @@ public class SistemaDeInventario {
 			opc = scan.nextInt();
 			//MENU PRINCIPAL
 			
-			switch(opc){
-				case 1:
-					System.out.println("Agregar producto.");
-					System.out.println("Ingrese la cantidad de productos que sea agregar");
-					int cantProductos = 0;
-					cantProductos = scan.nextInt();
-					agregarProducto(cantProductos);
-					
-				break;	
+			if(opc==1) {
+				System.out.println("Agregar producto.");
+				System.out.println("Ingrese la cantidad de productos que sea agregar");
+				int cantProductos = 0;
+				cantProductos = scan.nextInt();
+				agregarProducto(cantProductos);
+			}else if(opc == 2) {
+				System.out.println(" Visualizar Productos.");
+				visualizarProductos();
+			}else if(opc == 3) {
 				
-				case 2:
-					System.out.println(" Visualizar Productos.");
-					visualizarProductos();
-				break;
+			}else if(opc == 4) {
 				
-				default:
-					System.out.println("Opcion invalida");
+			}else if(opc == 5) {
 				
+			}else if(opc == 6) {
+				
+			}else {
+				System.out.println("Opcion incorrecta");
 			}
+				
+			
 			
 		}while(programa == false);
 
