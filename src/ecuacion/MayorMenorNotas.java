@@ -1,9 +1,9 @@
 package ecuacion;
-import java.util.Scanner;
-import java.time.*;
 import java.time.LocalDate;
+import java.time.Period;
+import java.util.Scanner;
 public class MayorMenorNotas {
-	
+
 
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
@@ -25,7 +25,7 @@ public class MayorMenorNotas {
 		int fisica=0;
 		int matematica=0;
 		int materia=0;
-		do {	
+		do {
 			System.out.println("Cuantos estudiantes desea ingresar?");
 			int numeroEstudiantes= scan.nextInt();
 			for(int i=0; i<numeroEstudiantes;i++) {
@@ -40,7 +40,7 @@ public class MayorMenorNotas {
 				int mesNacimiento= scan.nextInt();
 				System.out.print("Ingrese el dia: ");
 				int diaNacimiento= scan.nextInt();
-				
+
 				//Sexo del estudiante
 				System.out.println("Ingrese el tipo sexo del estudiante H/Hombre  M/Mujer");
 				String sexo = scan.next();
@@ -48,7 +48,7 @@ public class MayorMenorNotas {
 					masculino++;
 				}else {
 					femenino++;
-				}				
+				}
 				//fecha actual en años, meses y dias
 				LocalDate hoy = LocalDate.now();
 				LocalDate cumpleaños = LocalDate.of(anioNacimiento, mesNacimiento, diaNacimiento);
@@ -56,8 +56,8 @@ public class MayorMenorNotas {
 				int edadActual= periodo.getYears();
 				if(edadActual >= 18) {
 					System.out.println("El estudiante es mayor de edad, tiene "+ edadActual);
-					 mayorEdad++;
-					
+					mayorEdad++;
+
 				}else {
 					System.out.println("El estudiante es menor de edad, tiene "+ edadActual);
 					menorEdad--;
@@ -80,33 +80,32 @@ public class MayorMenorNotas {
 				for(int j=0;j<cantNotas;j++) {
 					System.out.println("Nota "+(j+1));
 					notas = scan.nextInt();
-					if(notas >= 0 && notas <=20) {
-						
+					if (notas >= 0 && notas <= 20) {
 						sumNotas+=notas;
-					}else {							
-							while(notas<0 || notas >20 ) {
-								System.out.println("Error, Marque una nota validad");
-								notas = scan.nextInt();
-							}
+					}else {
+						while(notas<0 || notas >20 ) {
+							System.out.println("Error, Marque una nota validad");
+							notas = scan.nextInt();
+						}
 						sumNotas+=notas;
-					}						
+					}
 				}
 				promedio = sumNotas / cantNotas;
 				if(cantNotas < menosNotas ) {
 					menosNotas=cantNotas;
 					menosCantidadNotas = nombreEstudiante;
 				}
-				
+
 				if(cantNotas > masNotas ) {
 					masNotas=cantNotas;
 					masCantidadNotas = nombreEstudiante;
 				}
-				
+
 				if(promedio > mayorPromedio ) {
 					mayorPromedio=promedio;
 					mejorPromedio = nombreEstudiante;
 				}
-				
+
 				if(promedio < menorPromedio ) {
 					menorPromedio=promedio;
 					peorPromedio = nombreEstudiante;
@@ -124,17 +123,17 @@ public class MayorMenorNotas {
 			System.out.println("Cantidad de estudiantes cursando fisica: "+fisica);
 			System.out.println("Cantidad de estudiantes cursando programacion: "+programacion);
 			System.out.println("Cantidad de estudiantes cursando matematica: "+matematica);
-			
-			
+
+
 			System.out.println("Desea continuar? 1/si  0/no");
 			int opc= scan.nextInt();
-			
+
 			if(opc!=1) {
 				program= true;
 			}
-			
+
 		}while(program==false);
-		
+
 		scan.close();
 
 	}
