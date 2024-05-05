@@ -21,6 +21,46 @@ public class SistemaDeInventario {
 	static double precioProducto[] = new double[99];
 	static int cantidadProducto[] = new int[99];
 
+	// metodo main
+	public static void main(String[] args) {
+		int salir = 6;
+		boolean programa = false;
+		do {
+			System.out.println("MENU");
+			System.out.println("1- Agregar producto.");
+			System.out.println("2- Visualizar productos.");
+			System.out.println("3- Modificar producto.");
+			System.out.println("4- Estadistica.");
+			System.out.println("5- Configuraciones (IVA / TASA DE CAMBIO).");
+			System.out.println("6- Salir.");
+			int opc = scan.nextInt();
+
+			// MENU PRINCIPAL
+			if (opc == 1) {
+				System.out.println("Agregar producto.");
+				System.out.println("Ingrese la cantidad de productos que sea agregar");
+				int cantProductos = 0;
+				cantProductos = scan.nextInt();
+				agregarProducto(cantProductos);
+			} else if (opc == 2) {
+				System.out.println(" Visualizar Productos.");
+				visualizarProductos();
+			} else if (opc == 3) {
+				modificarProductos();
+			} else if (opc == 4) {
+				estadisticas();
+			} else if (opc == 5) {
+
+			} else if (opc == salir) {
+				programa = true;
+
+			} else {
+				System.out.println("Opcion incorrecta");
+			}
+
+		} while (programa == false);
+
+	}
 	// Metodos
 	static void agregarProducto(int cantProductos) {
 		for(int i =0;i <cantProductos; i++){
@@ -86,9 +126,8 @@ public class SistemaDeInventario {
 			System.out.println("Nueva tasa: " + tasaUsdBs);
 		}
 	}
-	static void estadisticas() {
 
-		System.out.println("Cantidad de mercancia");
+	static void estadisticas() {
 		int cantTotalArticulos = 0;
 		double cantTotalPrecios = 0;
 		for (int i = 0; i < cantTotalProductos; i++) {
@@ -98,6 +137,7 @@ public class SistemaDeInventario {
 		double ivaReal = (cantTotalPrecios * (IVA / 100));
 		System.out.println("Cantidad total bruta: " + (cantTotalPrecios + ivaReal));
 		System.out.println("Cantitad total neta: " + cantTotalPrecios);
+		System.out.println("Cantidad de mercancia");
 		System.out.println(cantTotalArticulos);
 		System.out.println("Producto mas costoso");
 		System.out.println(nombreMasCostoso);
@@ -114,45 +154,9 @@ public class SistemaDeInventario {
 			}
 		}
 	}
-	public static void main(String[] args) {
-		int salir = 6;
-		boolean programa = false;
-		do {
-			System.out.println("MENU");
-			System.out.println("1- Agregar producto.");
-			System.out.println("2- Visualizar productos.");
-			System.out.println("3- Modificar producto.");
-			System.out.println("4- Estadistica.");
-			System.out.println("5- Configuraciones (IVA / TASA DE CAMBIO).");
-			System.out.println("6- Salir.");
-			int opc= scan.nextInt();
 
-			//MENU PRINCIPAL
-			if(opc==1) {
-				System.out.println("Agregar producto.");
-				System.out.println("Ingrese la cantidad de productos que sea agregar");
-				int cantProductos = 0;
-				cantProductos = scan.nextInt();
-				agregarProducto(cantProductos);
-			}else if(opc == 2) {
-				System.out.println(" Visualizar Productos.");
-				visualizarProductos();
-			}else if(opc == 3) {
-				modificarProductos();
-			}else if(opc == 4) {
-				estadisticas();
-			}else if(opc == 5) {
 
-			}else if(opc == salir) {
-				programa = true;
 
-			}else {
-				System.out.println("Opcion incorrecta");
-			}
-
-		}while(programa == false);
-
-	}
 
 	static void modificarProductos() {
 		scan.nextLine();
