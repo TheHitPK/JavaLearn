@@ -37,22 +37,62 @@ public class SistemaDeInventario {
 
 			// MENU PRINCIPAL
 			if (opc == 1) {
-				System.out.println("Agregar producto.");
-				System.out.println("Ingrese la cantidad de productos que sea agregar");
-				int cantProductos = 0;
-				cantProductos = scan.nextInt();
-				agregarProducto(cantProductos);
+				do {
+					System.out.println("Agregar producto.");
+					System.out.println("Ingrese la cantidad de productos que sea agregar");
+					int cantProductos = 0;
+					cantProductos = scan.nextInt();
+					agregarProducto(cantProductos);
+					System.out.println("Desea continuar o volver al menu?");
+					System.out.println("1- Continuar 2-Volver al menu");
+					opc = scan.nextInt();
+				} while (opc == 1);
+
 			} else if (opc == 2) {
-				System.out.println(" Visualizar Productos.");
-				visualizarProductos();
+
+				do {
+					System.out.println(" Visualizar Productos.");
+					visualizarProductos();
+					System.out.println("Desea continuar viendo?");
+					System.out.println("1- Continuar 2-Volver al menu");
+					opc = scan.nextInt();
+				} while (opc == 1);
+
 			} else if (opc == 3) {
-				modificarProductos();
+
+				do {
+					System.out.println("MODIFICAR PRODUCTOS");
+					modificarProductos();
+					System.out.println("Desea continuar modificando?");
+					System.out.println("1- Continuar 2-Volver al menu");
+					opc = scan.nextInt();
+				} while (opc == 1);
+
 			} else if (opc == 4) {
-				estadisticas();
+				do {
+					System.out.println(" ESTADISTICAS");
+					estadisticas();
+					System.out.println("Desea continuar viendo?");
+					System.out.println("1- Continuar 2-Volver al menu");
+					opc = scan.nextInt();
+				} while (opc == 1);
+
 			} else if (opc == 5) {
+				do {
+					System.out.println(" CONFIGURACION");
+					configuracion();
+					System.out.println("Desea continuar viendo?");
+					System.out.println("1- Continuar 2-Volver al menu");
+					opc = scan.nextInt();
+				} while (opc == 1);
 
 			} else if (opc == salir) {
-				programa = true;
+				System.out.println("Esta seguro que desea salir?");
+				System.out.println("Si- 1 \t No-0");
+				opc = scan.nextInt();
+				if (opc == 1) {
+					programa = true;
+				}
 
 			} else {
 				System.out.println("Opcion incorrecta");
@@ -134,6 +174,20 @@ public class SistemaDeInventario {
 			cantTotalArticulos += cantidadProducto[i];
 			cantTotalPrecios += precioProducto[i];
 		}
+		for (int k = 0; k < cantTotalProductos; k++) {
+			if (productoMasCostoso == precioProducto[k]) {
+				nombreMasCostoso = nombreProducto[k];
+			}
+			if (productoMenosCostoso == precioProducto[k]) {
+				nombreMenosCostoso = nombreProducto[k];
+			}
+			if (mayorCantArticulos == cantidadProducto[k]) {
+				nombreMayorCant = nombreProducto[k];
+			}
+			if (menorCantArticulos == cantidadProducto[k]) {
+				nombreMenorCant = nombreProducto[k];
+			}
+		}
 		double ivaReal = (cantTotalPrecios * (IVA / 100));
 		System.out.println("Cantidad total bruta: " + (cantTotalPrecios + ivaReal));
 		System.out.println("Cantitad total neta: " + cantTotalPrecios);
@@ -154,9 +208,6 @@ public class SistemaDeInventario {
 			}
 		}
 	}
-
-
-
 
 	static void modificarProductos() {
 		scan.nextLine();
@@ -209,6 +260,7 @@ public class SistemaDeInventario {
 					}
 
 				} else if (opcion == 4) {
+					System.out.println("Salir");
 				} else {
 					System.out.println("Error- ingrese una opcion valida");
 				}
