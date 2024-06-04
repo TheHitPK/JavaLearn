@@ -54,4 +54,6 @@ public class PromedioEstudiante {
 		}
 	}
 
+	static String codigoProducto[] = new String[99];
+
 }
