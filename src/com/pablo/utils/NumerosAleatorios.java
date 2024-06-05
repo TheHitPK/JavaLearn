@@ -10,8 +10,8 @@ public class NumerosAleatorios {
 		System.out.println("Ingrese cuantos numeros desea generar");
 		int cantNum = scan.nextInt();
 		GeneradorNumerosAleatorios(cantNum);
+		scan.close();
 	}
-
 	static void GeneradorNumerosAleatorios(int cantNum) {
 		int[] arrayNum = new int[cantNum];
 		for (int i = 0; i < cantNum; i++) {
