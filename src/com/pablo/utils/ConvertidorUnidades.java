@@ -5,15 +5,22 @@ import java.util.Scanner;
 
 public class ConvertidorUnidades {
 	static Scanner scan = new Scanner(System.in);
+
 	public static void main(String[] args) {
 		System.out.print("Ingrese la temperatura: ");
 		double temp = 0;
-		try {
-			temp = scan.nextDouble();
-		} catch (InputMismatchException e) {
-			System.out.println("Ingrese un decimal");
-			temp = scan.nextDouble();
-		}
+		boolean good;
+		do {
+			try {
+				good = false;
+				temp = scan.nextDouble();
+			} catch (InputMismatchException e) {
+				good = true;
+				System.out.println("Ingrese un decimal");
+				scan.nextLine();
+			}
+		} while (good == true);
+
 		System.out.println("En que medida?");
 		System.out.println("F- Farenheit");
 		System.out.println("K- Kelvin");
