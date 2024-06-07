@@ -19,7 +19,7 @@ public class ConvertidorUnidades {
 				System.out.println("Ingrese un decimal");
 				scan.nextLine();
 			}
-		} while (good == true);
+		} while (good);
 
 		System.out.println("En que medida?");
 		System.out.println("F- Farenheit");
