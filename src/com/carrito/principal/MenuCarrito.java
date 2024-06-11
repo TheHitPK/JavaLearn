@@ -29,7 +29,16 @@ public class MenuCarrito {
 			if (opc == 1) {
 				do {
 					System.out.println("Agregar Producto.");
-					productosInventario.agregarInventario(productos);
+					scan.nextLine();
+					System.out.println("Ingrese el nombre");
+					String descripcion = scan.nextLine();
+					System.out.println("Ingrese el codigo");
+					String codigo = scan.nextLine();
+					System.out.println("Ingrese la cantidad de articulos del producto");
+					int cantidad = scan.nextInt();
+					System.out.println("Ingrese el precio de cada articulo");
+					double precio = scan.nextDouble();
+					productosInventario.agregarInventario(productos, descripcion, codigo, cantidad, precio);
 					System.out.println("Desea continuar o volver al menu?");
 					System.out.println("1- Continuar 2-Volver al menu");
 					opc = scan.nextInt();
@@ -37,7 +46,10 @@ public class MenuCarrito {
 			} else if (opc == 2) {
 				do {
 					System.out.println("MODIFICAR PRODUCTOS");
-					productosInventario.modificarInventario(productos);
+					scan.nextLine();
+					System.out.println("Ingrese el codigo del producto a modificar");
+					String codigo = scan.nextLine();
+					productosInventario.modificarInventario(productos, codigo);
 					System.out.println("Desea continuar modificando?");
 					System.out.println("1- Continuar 2-Volver al menu");
 					opc = scan.nextInt();
@@ -61,7 +73,7 @@ public class MenuCarrito {
 			} else if (opc == 5) {
 				do {
 					System.out.println(" ESTADISTICAS");
-					// estadisticaInventario();
+					productosInventario.estadisticas(productos);
 					System.out.println("Desea continuar viendo?");
 					System.out.println("1- Continuar 2-Volver al menu");
 					opc = scan.nextInt();
@@ -69,7 +81,7 @@ public class MenuCarrito {
 			} else if (opc == 6) {
 				do {
 					System.out.println("CONFIGURACIONES");
-					// configuracion();
+					productosInventario.configuracion();
 					System.out.println("Desea continuar viendo?");
 					System.out.println("1- Continuar 2-Volver al menu");
 					opc = scan.nextInt();

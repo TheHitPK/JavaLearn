@@ -6,9 +6,6 @@ public class Producto {
 	private String codigo;
 	private int cantidad;
 	private double precio$;
-	private double precioBs;
-	private double iva;
-	private double tasa;
 
 	// METODO CONSTRUCTOR
 	public Producto(String descripcion, String codigo, int cantidad, double precio$) {
@@ -16,8 +13,6 @@ public class Producto {
 		this.codigo = codigo;
 		this.cantidad = cantidad;
 		this.precio$ = precio$;
-
-
 	}
 
 	// SETTERS
@@ -54,27 +49,4 @@ public class Producto {
 		return precio$;
 	}
 
-	public double getIva() {
-		return iva;
-	}
-
-	public void setIva(double iva) {
-		this.iva = iva;
-	}
-
-	public double getTasa() {
-		return tasa;
-	}
-
-	public void setTasa(double tasa) {
-		this.tasa = tasa;
-	}
-
-	public double getPrecioBs() {
-		return precioBs;
-	}
-
-	public void setPrecioBs(double precioBs) {
-		this.precioBs = precioBs;
-	}
 }
