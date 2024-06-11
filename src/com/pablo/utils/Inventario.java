@@ -31,7 +31,7 @@ public class Inventario {
 		}
 	}
 
-	public void listadoProductosMasMenosCant(ArrayList<Producto> inventarioProductos, double masMenosCant) {
+	public void listadoProductosMasMenosCant(ArrayList<Producto> inventarioProductos, int masMenosCant) {
 		for (int i = 0; i < inventarioProductos.size(); i++) {
 			if (masMenosCant == inventarioProductos.get(i).getCantidad()) {
 				System.out.println("Nombre " + inventarioProductos.get(i).getDescripcion());
@@ -55,6 +55,18 @@ public class Inventario {
 					String nuevoCodigo = scan.nextLine();
 					inventarioProductos.get(i).setDescripcion(nuevoCodigo);
 					System.out.println("El nuevo nombre es : " + inventarioProductos.get(i).getDescripcion());
+				} else if (opc == 2) {
+					System.out.println("Precio");
+					System.out.println("Ingrese el nuevo Precio");
+					Double nuevoPrecio = scan.nextDouble();
+					inventarioProductos.get(i).setPrecio(nuevoPrecio);
+					System.out.println("El nuevo Precio es : " + inventarioProductos.get(i).getPrecio());
+				} else if (opc == 3) {
+					System.out.println("Cantidad");
+					System.out.println("Ingrese la nueva Cantidad");
+					int nuevaCantidad = scan.nextInt();
+					inventarioProductos.get(i).setCantidad(nuevaCantidad);
+					System.out.println("La nueva cantidad es: " + inventarioProductos.get(i).getCantidad());
 				}
 			}
 		}
@@ -103,6 +115,19 @@ public class Inventario {
 
 	}
 
+	public double totalNeto(ArrayList<Producto> inventarioProductos) {
+		double neto = 0;
+		for (int i = 0; i < inventarioProductos.size(); i++) {
+			neto += inventarioProductos.get(i).getPrecio() * inventarioProductos.get(i).getCantidad();
+		}
+		return neto;
+	}
+
+	public double totalNetoBs(double totalNeto) {
+		double netoBs = totalNeto * getTasa();
+		return netoBs;
+	}
+
 	public void estadisticas(ArrayList<Producto> inventarioProductos) {
 		double productoMasCostoso = 0;
 		double productoMenosCostos = Double.MAX_VALUE;
@@ -116,10 +141,10 @@ public class Inventario {
 				productoMenosCostos = inventarioProductos.get(i).getPrecio();
 			}
 			if (inventarioProductos.get(i).getCantidad() > productoMayorCant) {
-				productoMasCostoso = inventarioProductos.get(i).getPrecio();
+				productoMayorCant = inventarioProductos.get(i).getCantidad();
 			}
 			if (inventarioProductos.get(i).getCantidad() < productoMenorCant) {
-				productoMenosCostos = inventarioProductos.get(i).getPrecio();
+				productoMenorCant = inventarioProductos.get(i).getCantidad();
 			}
 		}
 		System.out.println("Los productos mas costosos son: ");
@@ -130,5 +155,7 @@ public class Inventario {
 		listadoProductosMasMenosCant(inventarioProductos, productoMayorCant);
 		System.out.println("Los productos con menor cantidades son:");
 		listadoProductosMasMenosCant(inventarioProductos, productoMenorCant);
+		System.out.println("Total neto: " + totalNeto(inventarioProductos));
+		System.out.println("Total netoBs:" + totalNetoBs(totalNeto(inventarioProductos)));
 	}
 }
