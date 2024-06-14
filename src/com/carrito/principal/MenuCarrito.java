@@ -1,8 +1,10 @@
 package com.carrito.principal;
 
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import com.pablo.utils.Factura;
 import com.pablo.utils.Inventario;
 import com.pablo.utils.Producto;
 
@@ -13,7 +15,9 @@ public class MenuCarrito {
 	public static void main(String[] args) {
 		boolean programa = false;
 		ArrayList<Producto> productos = new ArrayList<>();
-		Inventario productosInventario = new Inventario();
+		Inventario inventario = new Inventario(productos);
+		ArrayList<Factura> facturas = new ArrayList<>();
+
 		do {
 			System.out.println("MENU CARRITO DE COMPRAS");
 			System.out.println("1- Agregar Producto.");
@@ -38,7 +42,7 @@ public class MenuCarrito {
 					int cantidad = scan.nextInt();
 					System.out.println("Ingrese el precio de cada articulo");
 					double precio = scan.nextDouble();
-					productosInventario.agregarInventario(productos, descripcion, codigo, cantidad, precio);
+					productos.add(new Producto(descripcion, codigo, cantidad, precio));
 					System.out.println("Desea continuar o volver al menu?");
 					System.out.println("1- Continuar 2-Volver al menu");
 					opc = scan.nextInt();
@@ -49,7 +53,7 @@ public class MenuCarrito {
 					scan.nextLine();
 					System.out.println("Ingrese el codigo del producto a modificar");
 					String codigo = scan.nextLine();
-					productosInventario.modificarInventario(productos, codigo);
+					inventario.modificarInventario(codigo);
 					System.out.println("Desea continuar modificando?");
 					System.out.println("1- Continuar 2-Volver al menu");
 					opc = scan.nextInt();
@@ -57,36 +61,60 @@ public class MenuCarrito {
 			} else if (opc == 3) {
 				do {
 					System.out.println(" Listado de PRODUCTOS.");
-					productosInventario.listadoInvetario(productos);
+					inventario.listadoInvetario();
 					System.out.println("Desea continuar viendo?");
-					System.out.println("1- Continuar 2-Volver al menu");
+					System.out.println("1-Continuar 2-Volver al menu");
 					opc = scan.nextInt();
 				} while (opc == 1);
 			} else if (opc == 4) {
+				scan.nextLine();
+				String salir = "S";
 				do {
-					System.out.println("Buscar por Codigo");
-					// buscarPorCodigo();
+					System.out.println("Comprar");
+					inventario.listadoInvetario();
+					facturas.add(new Factura(productos, inventario.getIva(), inventario.getTasa(), scan));
 					System.out.println("Desea continuar viendo?");
-					System.out.println("1- Continuar 2-Volver al menu");
-					opc = scan.nextInt();
+					System.out.println("S- Continuar M-Volver al menu");
+					salir = scan.nextLine();
 				} while (opc == 1);
 			} else if (opc == 5) {
 				do {
-					System.out.println(" ESTADISTICAS");
-					productosInventario.estadisticas(productos);
+					System.out.println("Buscar por Codigo la factura");
+					scan.nextLine();
+					String buscarFactura = scan.nextLine();
+					for (Factura listaFacturas : facturas) {
+						if (buscarFactura.equals(listaFacturas.getCodigoFactura())) {
+							listaFacturas.mostrarFactura();
+						}
+					}
 					System.out.println("Desea continuar viendo?");
 					System.out.println("1- Continuar 2-Volver al menu");
 					opc = scan.nextInt();
 				} while (opc == 1);
 			} else if (opc == 6) {
 				do {
-					System.out.println("CONFIGURACIONES");
-					productosInventario.configuracion();
+					System.out.println(" ESTADISTICAS");
+					inventario.estadisticas();
+					double facturaMasCostosa = 0;
+					for (Factura listaFactura : facturas) {
+						if (listaFactura.getTotal() > facturaMasCostosa) {
+							facturaMasCostosa = listaFactura.getTotal();
+						}
+					}
+					System.out.println("Factura mas costosa: " + facturaMasCostosa);
 					System.out.println("Desea continuar viendo?");
 					System.out.println("1- Continuar 2-Volver al menu");
 					opc = scan.nextInt();
 				} while (opc == 1);
 			} else if (opc == 7) {
+				do {
+					System.out.println("CONFIGURACIONES");
+					inventario.configuracion();
+					System.out.println("Desea continuar viendo?");
+					System.out.println("1- Continuar 2-Volver al menu");
+					opc = scan.nextInt();
+				} while (opc == 1);
+			} else if (opc == 8) {
 				System.out.println("Esta seguro que desea salir?");
 				System.out.println("Si- 1 \t No-0");
 				opc = scan.nextInt();

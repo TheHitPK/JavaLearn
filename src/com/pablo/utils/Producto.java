@@ -15,6 +15,10 @@ public class Producto {
 		this.precio$ = precio$;
 	}
 
+	public Producto(Producto encontrar) {
+		// TODO Auto-generated constructor stub
+	}
+
 	// SETTERS
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
