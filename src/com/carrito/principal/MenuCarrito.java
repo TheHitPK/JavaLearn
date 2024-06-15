@@ -67,15 +67,13 @@ public class MenuCarrito {
 					opc = scan.nextInt();
 				} while (opc == 1);
 			} else if (opc == 4) {
-				scan.nextLine();
-				String salir = "S";
 				do {
+					scan.nextLine();
 					System.out.println("Comprar");
 					inventario.listadoInvetario();
 					facturas.add(new Factura(productos, inventario.getIva(), inventario.getTasa(), scan));
-					System.out.println("Desea continuar viendo?");
-					System.out.println("S- Continuar M-Volver al menu");
-					salir = scan.nextLine();
+					System.out.println("1- Realizar otra factura 2-Volver al menu");
+					opc = scan.nextInt();
 				} while (opc == 1);
 			} else if (opc == 5) {
 				do {
@@ -96,12 +94,20 @@ public class MenuCarrito {
 					System.out.println(" ESTADISTICAS");
 					inventario.estadisticas();
 					double facturaMasCostosa = 0;
+					String codigoFacturaMasCostosa = "ninguna";
+					double totalVentas = 0;
+					double totalVentasBS = 0;
 					for (Factura listaFactura : facturas) {
+						totalVentas += listaFactura.getTotal();
 						if (listaFactura.getTotal() > facturaMasCostosa) {
 							facturaMasCostosa = listaFactura.getTotal();
+							codigoFacturaMasCostosa = listaFactura.getCodigoFactura();
 						}
 					}
-					System.out.println("Factura mas costosa: " + facturaMasCostosa);
+					System.out.println("Codigo factura mas costosa: " + codigoFacturaMasCostosa + " con un Total de: "
+							+ facturaMasCostosa);
+					System.out.println("Total ventas $: " + totalVentas);
+					System.out.println("Total ventas BS: " + (totalVentas * inventario.getTasa()));
 					System.out.println("Desea continuar viendo?");
 					System.out.println("1- Continuar 2-Volver al menu");
 					opc = scan.nextInt();

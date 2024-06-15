@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Factura {
-	private final String NOMBRE_EMPRESA = "MARHABAB.COM";
+	private final String NOMBRE_EMPRESA = "MARHABAB C.A";
 	private final String RIF_EMPRESA = "J-50302195-0";
 	private String codigoFactura;
 	private double iva;
@@ -13,10 +13,6 @@ public class Factura {
 	private double total;
 	private ArrayList<Producto> productosComprados;
 	private ArrayList<Producto> productoSelecionado;
-	private ArrayList<Integer> cantidades;
-	private ArrayList<Integer> cantTotalProductosFacturados;
-	private ArrayList<Double> Precios;
-	private Inventario inventario;
 
 	public Factura(ArrayList<Producto> productosComprados, double iva, double tasa, Scanner scan) {
 		this.productosComprados = productosComprados;
@@ -64,29 +60,6 @@ public class Factura {
 		this.tasa = tasa;
 	}
 
-	public ArrayList<Integer> getCantidades() {
-		return cantidades;
-	}
-
-	public void setCantidades(ArrayList<Integer> cantidades) {
-		this.cantidades = cantidades;
-	}
-
-	public ArrayList<Integer> getCantTotalProductosFacturados() {
-		return cantTotalProductosFacturados;
-	}
-
-	public void setCantTotalProductosFacturados(ArrayList<Integer> cantTotalProductosFacturados) {
-		this.cantTotalProductosFacturados = cantTotalProductosFacturados;
-	}
-
-	public ArrayList<Double> getPrecios() {
-		return Precios;
-	}
-
-	public void setPrecios(ArrayList<Double> precios) {
-		Precios = precios;
-	}
 
 	public Producto productoComprado(String codigo, int cantidad, ArrayList<Producto> iventario,
 			ArrayList<Producto> carrito) {
@@ -134,7 +107,7 @@ public class Factura {
 			System.out.println("Ingrese la cantidad que desea del producto");
 			int cantidad = scan.nextInt();
 			productoComprado(codigo, cantidad, iventario, getCarrito());
-			System.out.println("1-ya   2-Seguir agregando");
+			System.out.println("1-Seguir agregando productos   2-FACTURAR");
 			opc = scan.nextInt();
 			scan.nextLine();
 		} while (opc == 1);
@@ -143,7 +116,7 @@ public class Factura {
 	public void visualizarProductos(ArrayList<Producto> iventario) {
 		for (Producto productosEnCompra : iventario) {
 			if (productosEnCompra.getCantidad() != 1) {
-				System.out.println("x" + productosEnCompra.getCantidad());
+				System.out.println(productosEnCompra.getPrecio() + " x" + productosEnCompra.getCantidad());
 			}
 			System.out.println(productosEnCompra.getDescripcion() + " \t "
 					+ (productosEnCompra.getCantidad() * productosEnCompra.getPrecio()) + "$");
