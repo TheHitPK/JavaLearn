@@ -36,7 +36,7 @@ public class SistemaDeInventario {
 					System.out.println("Agregar Producto.");
 					System.out.println("Ingrese la cantidad de productos a ingresar");
 					int cantArticulos = scan.nextInt();
-					agregarProducto(cantArticulos);
+					// agregarProducto(cantArticulos);
 					System.out.println("Desea continuar o volver al menu?");
 					System.out.println("1- Continuar 2-Volver al menu");
 					opc = scan.nextInt();
@@ -95,23 +95,7 @@ public class SistemaDeInventario {
 
 	}
 
-	static void agregarProducto(int cantProducto) {
-		for (int i = 0; i < cantProducto; i++) {
-			scan.nextLine();
-			System.out.println("Ingrese el nombre del Producto: ");
-			descripcionProducto[cantTotalProductos] = scan.nextLine();
-			System.out.println("Ingrese el Codigo del producto");
-			codigoProducto[cantTotalProductos] = verificarCodigo(cantTotalProductos);
-			System.out.println("Ingrese el precio del Producto");
-			precioProducto[cantTotalProductos] = verficarPrecio();
-			System.out.println("Ingrese la cantidad de articulos del producto agregado");
-			cantProductosAgregado[cantTotalProductos] = scan.nextInt();
-			eleccionTipoProducto(cantTotalProductos);
-			eleccionExcento(cantTotalProductos);
 
-			cantTotalProductos++;
-		}
-	}
 
 	static String verificarCodigo(int cantTotalProductos) {
 		String codigo = scan.nextLine();
