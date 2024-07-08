@@ -1,12 +1,15 @@
 package com.bank.cuentas;
 
 public abstract class Cuentas {
-	protected String usuario;
-	protected String contraseña;
-	protected String correo;
+	private String usuario;
+	private String contraseña;
+	private String correo;
 
-
-	public abstract void salir();
+	public Cuentas(String usuario, String contraseña, String correo) {
+		this.usuario = usuario;
+		this.contraseña = contraseña;
+		this.correo = correo;
+	}
 
 	public String getUsuario() {
 		return usuario;
