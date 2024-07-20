@@ -1,0 +1,4 @@
+que 4
+tiene 0
+tienes 2
+hola 3
